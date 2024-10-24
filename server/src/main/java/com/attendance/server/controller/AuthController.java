@@ -35,6 +35,7 @@ public class AuthController {
             e.printStackTrace();
         }
     }
+ 
 
     // validate the credentials and return JWT token
     @PostMapping("/login")
