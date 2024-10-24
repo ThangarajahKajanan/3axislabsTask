@@ -10,6 +10,12 @@ const LoginPage = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
 
+        //  simple form validation
+        if (!username || !password) {
+            setError('Username and password are required');
+            return;
+        }
+
 
         try {
             // connect to the server via backend login API
