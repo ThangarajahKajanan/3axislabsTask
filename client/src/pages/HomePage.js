@@ -3,12 +3,20 @@ import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
 
+  useEffect(() => {
+    // redirect to the home page if the user is already logged in.
+    const token = localStorage.getItem('token');
+    if (!token) {
+        navigate('/');
+    }
+  }, [navigate]);
+
   const handleLogout = () => {
     // clear the token from localStorage and redirect to login
     localStorage.removeItem('token');
     navigate('/');
   };
-  
+
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
