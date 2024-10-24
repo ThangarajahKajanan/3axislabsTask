@@ -1,12 +1,33 @@
 import React from 'react'
 import { useState } from 'react';
+import axios from 'axios';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
  
     const handleLogin = async (e) => {
         e.preventDefault();
+
+
+        try {
+            // connect to the server via backend login API
+            const response = await axios.post('http://localhost:8080/api/auth/login', 
+                { username, password }, 
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                }
+            );
+
+        } catch (err) {
+            setError('Invalid username or password');  // Handle login failure
+        }
+
+
+
     };
 
     return (
