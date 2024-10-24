@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
 
+  const navigate = useNavigate();
+  
   useEffect(() => {
     // redirect to the home page if the user is already logged in.
     const token = localStorage.getItem('token');
