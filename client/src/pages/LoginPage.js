@@ -7,6 +7,7 @@ const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
     const navigate = useNavigate();
 
     // If the user is already logged in, redirect to home
@@ -39,10 +40,14 @@ const LoginPage = () => {
                 }
             );
 
-            // Successfully log in the user and redirect to the home page.
+            // successfully login -> redirect to the home page.
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
-                navigate('/home');
+                setSuccessMessage('Successfully logged in!');
+                setTimeout(() => {
+                    navigate('/home');  // redirect to the home page -> showing the success message
+                }, 2000); // set 2s delay
+             
             } else {
                 setError(response.data.message || 'Login failed');
             }
@@ -57,6 +62,12 @@ const LoginPage = () => {
 
     return (
         <div className="flex min-h-screen items-center justify-center bg-gray-100 p-4">
+            {/* Success Login alert message */}
+            {successMessage && (
+                <div className="fixed top-0 left-0 w-full bg-green-700 text-white text-center p-3">
+                    {successMessage}
+                </div>
+            )}
             <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-6 lg:p-10 space-y-6">
                 <h2 className="text-2xl font-semibold text-center text-teal-600">
                     Login
