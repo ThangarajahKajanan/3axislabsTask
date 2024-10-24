@@ -1,11 +1,22 @@
 import React from 'react'
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
+
+    // If the user is already logged in, redirect to home
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        if (token) {
+            navigate('/home');
+        }
+    }, [navigate]);
+
  
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -50,7 +61,7 @@ const LoginPage = () => {
                 <h2 className="text-2xl font-semibold text-center text-teal-600">
                     Login
                 </h2>
-                
+                {error && <p className="text-red-500 text-center">{error}</p>}
                 <form onSubmit={handleLogin} className="space-y-4">
                     {/* Username */}
                     <div>
