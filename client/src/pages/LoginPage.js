@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -68,7 +68,7 @@ const LoginPage = () => {
                         <label className="block mb-2 text-sm font-medium text-gray-700">Username</label>
                         <input
                             type="text"
-                            className="w-full p-3 border border-gray-300 rounded-lg"
+                            className="w-full p-3 border border-gray-300 rounded-lg  focus:outline-none "
                             placeholder="Enter your username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
@@ -80,7 +80,7 @@ const LoginPage = () => {
                         <label className="block mb-2 text-sm font-medium text-gray-700">Password</label>
                         <input
                             type="password"
-                            className="w-full p-3 border border-gray-300 rounded-lg"
+                            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none  "
                             placeholder="Enter your password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
