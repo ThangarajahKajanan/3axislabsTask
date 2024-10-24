@@ -28,6 +28,14 @@ const LoginPage = () => {
                 }
             );
 
+            // Successfully log in the user and redirect to the home page.
+            if (response.data.token) {
+                localStorage.setItem('token', response.data.token);
+                navigate('/home');
+            } else {
+                setError(response.data.message || 'Login failed');
+            }
+
         } catch (err) {
             setError('Invalid username or password');  // Handle login failure
         }
