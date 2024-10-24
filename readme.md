@@ -35,15 +35,28 @@ npm start
 The front-end should now be running on http://localhost:3000
 
 ### Setting Up the Back-End (Spring Boot)
-cd server
-bash -> mvn clean install
-bash -> mvn spring-boot:run
+### cd server
+# bash -> mvn clean install
+# bash -> mvn spring-boot:run
 
 
-###  login credentials
+###  Testing Credentials
 ### 1
-username = admin
-password = password123
+# username = admin
+# password = password123
 ### 2
-username = user
-password = secret
+# username = user
+# password = secret
+
+### How to Test
+	1.	(Start both back-end & frontend ) Open the login page (http://localhost:3000/login).
+	2.	Enter one of the testing credentials and click Login.
+	3.	If successful, you will be redirected to the Home page.
+	4.	To log out, click the Logout button.
+
+### Error Handling
+    1.if the credentials incorrect -> an error message will be displayed.
+    2.If no token is found, the user will be redirected back to the login page.
+
+### Login Validation: Only valid users from the users.txt file can log in.
+
